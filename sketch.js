@@ -15,8 +15,8 @@ class Node {
         this.x_velocity = 0;
         this.y_velocity = 0;
         if (this.moveable) {
-            this.x_velocity = (Math.random() - 0.5) * 10;
-            this.y_velocity = (Math.random() - 0.5) * 10;
+            this.x_velocity = (Math.random() - 0.5) * 1;
+            this.y_velocity = (Math.random() - 0.5) * 1;
         }
 
     }
@@ -47,6 +47,11 @@ class Node {
         if (this.infected) fill(color(255, 103, 97));
         else fill(color('white'));
 
+        // if (this.infected) {
+        //     this.x_velocity = 0;
+        //     this.y_velocity = 0;
+        // }
+
         this.x += this.jitter();
         this.x = this.x < 0 ? 0 : this.x;
         this.x = this.x > this.canvas_width ? this.canvas_width : this.x;
@@ -70,9 +75,9 @@ let dims = {
 };
 var nodes = [];
 
-let radius = 10;
+let radius = 6;
 let radh = radius / 2;
-let population = 2000;
+let population = 500;
 
 function createNode() {
     nodes.push(new Node(
@@ -82,9 +87,7 @@ function createNode() {
         dims.width,
         dims.height,
         true,
-        true,
-        false,
-        5
+        true
     ));
     infected++;
     population++;
@@ -94,7 +97,7 @@ var start_time;
 var stop_time;
 function setup() {
     let cnv = createCanvas(dims.width, dims.height);
-    cnv.mousePressed(createNode);
+    //cnv.mousePressed(createNode);
 
     for (var i = 0; i < population; i++) {
         nodes.push(new Node(
@@ -104,21 +107,20 @@ function setup() {
             dims.width,
             dims.height,
             false,
-            true,
-            false,
-            5
+            true
         ));
     }
-    // nodes.push(new Node( (Math.random()*(dims.width-radius))+radh,
-    //  (Math.random()*(dims.height-radius))+radh,
-    //   radius,
-    //   dims.width,
-    //    dims.height,
-    //    false,
-    //     true,
-    //     true, 
-    //     5
-    //     ));
+    nodes.push(new Node(
+        dims.width/2,
+        dims.height/2,
+        radius,
+        dims.width,
+        dims.height,
+        true,
+        true
+    ));
+    infected++;
+    population++;
     start_time = millis();
 }
 
