@@ -1,4 +1,4 @@
-# covid19-spread-virtualization
-The virtualization shows the strategy to avoid the spread of COVID-19. eg. social distancing, isolation etc.
+# covid19-simulator
+A virtualization that shows the affect of COVID-19 in different scenarios. eg. social distancing, isolation etc.
 
-link: http://covid19growth.000webhostapp.com/
+link: http://covid19simulator.000webhostapp.com/
